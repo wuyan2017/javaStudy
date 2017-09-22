@@ -26,8 +26,7 @@ public class Loan extends JPanel {
 
     public Loan() {
         jl1 = new JLabel("贷款金额");
-        jl2 = new JLabel("贷款时间");
-        jl3 = new JLabel("月");
+        jl2 = new JLabel("贷款时间（单位：月）");
         jl4 = new JLabel("计划还款期数");
         jf1 = new JTextField(5);//金额
         jf2 = new JTextField(5);//时间
@@ -38,12 +37,11 @@ public class Loan extends JPanel {
         jp1.add(jf1);
         jp2.add(jl2);
         jp2.add(jf2);
-        jp2.add(jl3);
         jp4.add(jl4);
         jp4.add(jf3);
         jp3.add(jb1);
         jp3.add(jb2);
-        jp.setLayout(new GridLayout(6, 10, 10, 20));
+        jp.setLayout(new GridLayout(2,1));
         jp.add(jp1);
         jp.add(jp2);
         jp.add(jp4);
@@ -57,37 +55,36 @@ public class Loan extends JPanel {
                 }
                 else {
                     String str = jf1.getText().trim();
-                    in1= Integer.parseInt(str);
+                    in1= Integer.parseInt(str);//贷款金额
                     String str2=jf2.getText().trim();
-                    in2=Integer.parseInt(str2);
+                    in2=Integer.parseInt(str2);//贷款时间
                     String str3=jf3.getText().trim();
-                    in3=Integer.parseInt(str3);
-                    double num=(in1*in2*30*0.003+in1)/in3;
-
-                    System.out.println(in1);
-                    System.out.println(in2);
-                    System.out.println(in3);
-                    System.out.println(num);
-                    JOptionPane.showMessageDialog(null,"您每月需还"+num+"元");
+                    in3=Integer.parseInt(str3);//贷款期数
+                    JOptionPane.showMessageDialog(null,"贷款成功！");
                     try {
                         Driver driver = new com.mysql.jdbc.Driver();
                         DriverManager.registerDriver(driver);
-                /* 2.获取数据库连接 */
                         String url = "jdbc:mysql://192.168.1.214:3306/test";
                         String user = "root";
                         String password = "chengce214";
                         conn = DriverManager.getConnection(url, user, password);
-                //            3.获取数据操作的对象
                         statement = conn.createStatement();
-                        //            4.执行SQL语句
-                        String sql = "UPDATE test_wuyan SET  total='"+in1+"',n='"+in2+"',agv='"+in3+"'WHERE  NAME ='"+ nam+"'";
+                        String sql = "UPDATE test_wuyan SET  total='"+in1+"',n='"+in2+"',agv='"+in3+"',loan_time=now() WHERE  NAME ='"+ nam+"'";
                         statement.executeUpdate(sql);
                     }
                     catch (SQLException ee) {
                         ee.printStackTrace();
+                    }finally {
+                        try {
+                            if(conn!=null) {
+                                conn.close();
+                            }
+                            statement.close();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
-
             }
         });
         jb2.addActionListener(new ActionListener() {
@@ -100,5 +97,4 @@ public class Loan extends JPanel {
         this.setVisible(true);
         this.setSize(600, 400);
     }
-
 }

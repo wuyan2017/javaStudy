@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 import static com.company.Login.nam;
+import static com.company.PayPlan.money1;
 
 /**
  * Created by wuyan on 2017/8/22.
@@ -83,8 +84,11 @@ public class Repay extends JPanel{
                     try {
                         s=jtf.getText();
                         money=Integer.parseInt(s);
+                        if(money<money1){
+                            JOptionPane.showMessageDialog(null,"还款金额不够,挂账。...");
+                        }
                         tol=total-money;
-                        String sql2="update test_wuyan set total='"+tol+"',record=record+'"+money+"' WHERE NAME ='"+nam+"'";
+                        String sql2="update test_wuyan set total='"+tol+"',record=record+'"+money+"',pay_time=now()  WHERE NAME ='"+nam+"'";
                         re = statement.executeUpdate(sql2);
                         System.out.println(record);
                         System.out.println(money);
@@ -96,7 +100,7 @@ public class Repay extends JPanel{
             });
         } catch (SQLException ee) {
             ee.printStackTrace();
-        } finally {
+        } /*finally {
             if (res != null) {
                 try {
                     res.close();
@@ -104,6 +108,13 @@ public class Repay extends JPanel{
                     ee.printStackTrace();
                 }
             }
-        }
+            if(conn!=null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }*/
     }
 }
