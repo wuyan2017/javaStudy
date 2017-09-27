@@ -25,23 +25,39 @@ public class Loan extends JPanel {
     int in1,in2,in3;
 
     public Loan() {
-        jl1 = new JLabel("贷款金额");
-        jl2 = new JLabel("贷款时间（单位：月）");
-        jl4 = new JLabel("计划还款期数");
-        jf1 = new JTextField(5);//金额
-        jf2 = new JTextField(5);//时间
-        jf3 = new JTextField(5);//期数
+        jl1 = new JLabel("贷款金额（单位：元）");
+        JComboBox comboBox_money=new JComboBox();
+        for (int i = 1; i <6 ; i++) {
+            comboBox_money.addItem(1000*i);
+        }
+        comboBox_money.setPreferredSize(new Dimension(70,20));
+        comboBox_money.setBackground(Color.white);
+
+        jl2 = new JLabel("贷款时间（单位：月） ");
+        JComboBox comboBox_month=new JComboBox();
+        for (int i = 5; i <13 ; i++) {
+            comboBox_month.addItem(i);  //时间选框
+        }
+        comboBox_month.setPreferredSize(new Dimension(50,20));
+        comboBox_month.setBackground(Color.white);
+        jl4 = new JLabel("还款期数（单位：期）");
+        JComboBox comboBox=new JComboBox();
+        for (int i = 5; i <13 ; i++) {
+            comboBox.addItem(i);  //期数选框
+        }
+        comboBox.setPreferredSize(new Dimension(50,20));
+        comboBox.setBackground(Color.white);
         jb1 = new JButton("确认");
         jb2 = new JButton("取消");
         jp1.add(jl1);
-        jp1.add(jf1);
+        jp1.add(comboBox_money);
         jp2.add(jl2);
-        jp2.add(jf2);
+        jp2.add(comboBox_month);
         jp4.add(jl4);
-        jp4.add(jf3);
+        jp4.add(comboBox);
         jp3.add(jb1);
         jp3.add(jb2);
-        jp.setLayout(new GridLayout(2,1));
+        jp.setLayout(new GridLayout(4,1));
         jp.add(jp1);
         jp.add(jp2);
         jp.add(jp4);
@@ -50,15 +66,11 @@ public class Loan extends JPanel {
         jb1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(jf1.getText().equals("")||jf2.getText().equals("")||jf3.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,"输入错误");
-                }
-                else {
-                    String str = jf1.getText().trim();
+                    String str = comboBox_money.getSelectedItem().toString();
                     in1= Integer.parseInt(str);//贷款金额
-                    String str2=jf2.getText().trim();
+                    String str2=comboBox_month.getSelectedItem().toString();
                     in2=Integer.parseInt(str2);//贷款时间
-                    String str3=jf3.getText().trim();
+                    String str3=comboBox.getSelectedItem().toString();
                     in3=Integer.parseInt(str3);//贷款期数
                     JOptionPane.showMessageDialog(null,"贷款成功！");
                     try {
@@ -69,7 +81,7 @@ public class Loan extends JPanel {
                         String password = "chengce214";
                         conn = DriverManager.getConnection(url, user, password);
                         statement = conn.createStatement();
-                        String sql = "UPDATE test_wuyan SET  total='"+in1+"',n='"+in2+"',agv='"+in3+"',loan_time=now() WHERE  NAME ='"+ nam+"'";
+                        String sql = "UPDATE test_wuyan SET total='"+in1+"',n='"+in2+"',agv='"+in3+"',loan_time=now() WHERE  NAME ='"+nam+"'";
                         statement.executeUpdate(sql);
                     }
                     catch (SQLException ee) {
@@ -85,7 +97,6 @@ public class Loan extends JPanel {
                         }
                     }
                 }
-            }
         });
         jb2.addActionListener(new ActionListener() {
             @Override

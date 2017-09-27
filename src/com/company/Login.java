@@ -23,7 +23,6 @@ public  class Login extends JFrame{
     String InPwd;
     public  static String nam,ID,pw;
 
-
     public Login() {
         jb1 = new JButton("确认");
         jb2 = new JButton("取消");
@@ -51,14 +50,11 @@ public  class Login extends JFrame{
         this.add(jp1);
         this.add(jp2);
         this.add(jp3);
-        //设置窗体属性
         this.setTitle("登录界面");
         this.setSize(280, 160);
         this.setLocation(800, 400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-
-        //添加按钮事件
         jb1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,24 +65,22 @@ public  class Login extends JFrame{
                     System.out.println(InPwd);
                     Driver driver = new com.mysql.jdbc.Driver();
                     DriverManager.registerDriver(driver);
-//            2.获取数据库连接
                     String url = "jdbc:mysql://192.168.1.214:3306/test";
                     String user = "root";
                     String password = "chengce214";
                     conn = DriverManager.getConnection(url, user, password);
-//            3.获取数据操作的对象
                     statement = conn.createStatement();
-//            4.执行SQL语句，DML语句
                     String sql = "select * from test_wuyan where NAME='"+InName+"'";
                     res = statement.executeQuery(sql);
                     while(res.next()) {
-                        ID = res.getString(1);
-                        nam = res.getString(2);
-                        pw=res.getString(6);
+                        ID = res.getString(2);
+                        nam = res.getString(1);
+                        pw=res.getString(3);
                         System.out.println("name:" + nam+",password:"+pw);
                     }
                     if (InName.equals(nam)&&InPwd.equals(pw)){
                         new client();
+                        dispose();
                     }
                     else{
                         JOptionPane.showMessageDialog(null,"账号或密码错误");
