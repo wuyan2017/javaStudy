@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd7e71b1-e12e-4b6a-a8e7-f99e74ec9943" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Loan$1.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Loan$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Loan$2.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Loan$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Loan.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Loan.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Login$1.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Login$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Login$2.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Login$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Login.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Login.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/PayPlan.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/PayPlan.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Record.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Record.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Repay$1.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Repay$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Repay$2.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Repay$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Repay.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/Repay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/client.class" afterPath="$PROJECT_DIR$/../Bank/out/production/Bank/com/company/client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/.idea/vcs.xml" afterPath="$PROJECT_DIR$/../Bank/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Bank/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/src/com/company/Loan.java" afterPath="$PROJECT_DIR$/../Bank/src/com/company/Loan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/src/com/company/Login.java" afterPath="$PROJECT_DIR$/../Bank/src/com/company/Login.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/src/com/company/PayPlan.java" afterPath="$PROJECT_DIR$/../Bank/src/com/company/PayPlan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/src/com/company/Record.java" afterPath="$PROJECT_DIR$/../Bank/src/com/company/Record.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/src/com/company/Repay.java" afterPath="$PROJECT_DIR$/../Bank/src/com/company/Repay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bank/src/com/company/client.java" afterPath="$PROJECT_DIR$/../Bank/src/com/company/client.java" />
-    </list>
+    <list default="true" id="dd7e71b1-e12e-4b6a-a8e7-f99e74ec9943" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/../Bank/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -156,8 +135,8 @@
       <file leaf-file-name="TableEditor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../Bank/src/com/company/TableEditor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="40" column="66" lean-forward="true" selection-start-line="40" selection-start-column="66" selection-end-line="40" selection-end-column="66" />
+            <state relative-caret-position="234">
+              <caret line="34" column="50" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -780,12 +759,12 @@
       <workItem from="1506389360718" duration="18839000" />
       <workItem from="1506417914933" duration="4036000" />
       <workItem from="1506475484837" duration="1252000" />
-      <workItem from="1506478862464" duration="5352000" />
+      <workItem from="1506478862464" duration="5439000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133890000" />
+    <option name="totallyTimeSpent" value="133977000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -797,7 +776,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1276,8 +1255,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Bank/src/com/company/TableEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="40" column="66" lean-forward="true" selection-start-line="40" selection-start-column="66" selection-end-line="40" selection-end-column="66" />
+        <state relative-caret-position="234">
+          <caret line="34" column="50" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
