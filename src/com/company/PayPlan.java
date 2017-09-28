@@ -5,8 +5,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.*;
 import java.util.Vector;
-
 import static com.company.Login.nam;
+import static com.company.Record.*;
 import static com.company.Repay.money;
 /**
  *@Author:吴焰
@@ -19,12 +19,13 @@ public class PayPlan extends JPanel {
     Connection conn = null;
     Statement statement = null;
     ResultSet res = null;
-    int total,agv,n;//总额，每期应还金额，期数
-    static float money1,money2,money3,money4,money5;
-    Date lo_time;
-    float money_guazhang;
-    int record;
-    Date pay_time1;
+    static int total,agv,n;//总额，每期应还金额，期数
+    static float money1,money2,money3,money4,money5,money6,money7,money8,money9,money10;
+    static Date lo_time;
+    static float money_guazhang,money_guazhang2,money_guazhang3,
+            money_guazhang4,money_guazhang5,money_guazhang6,money_guazhang7,money_guazhang8,money_guazhang9,money_guazhang10;
+    static  float record,record2,record3,record4,record5,record6;
+    String pay_time1;
     DefaultTableModel model = null;
     public PayPlan(){
         try {
@@ -42,18 +43,99 @@ public class PayPlan extends JPanel {
                 n = res.getInt("n");
                 agv = res.getInt("agv");
                 lo_time = res.getDate("loan_time");
-                money_guazhang=res.getInt("guazhang");
-                record=res.getInt("record");
-                pay_time1=res.getDate("pay_time1");
+                money_guazhang=res.getFloat("guazhang");
+                money_guazhang2=res.getFloat("guazhang2");
+                money_guazhang3=res.getFloat("guazhang3");
+                money_guazhang4=res.getFloat("guazhang4");
+                money_guazhang5=res.getFloat("guazhang5");
+                money_guazhang6=res.getFloat("guazhang6");
+                money_guazhang7=res.getFloat("guazhang7");
+                money_guazhang8=res.getFloat("guazhang8");
+                money_guazhang9=res.getFloat("guazhang9");
+                money_guazhang10=res.getFloat("guazhang10");
+                pay_time1=res.getString("pay_time1");
+                record=res.getFloat("record");
+                record2=res.getFloat("record2");
+                record3=res.getFloat("record3");
+                record4=res.getFloat("record4");
+                record5=res.getFloat("record5");
+                System.out.println(pay_time1);
             }
-            if (pay_time1.toLocalDate().getMonthValue()>lo_time.toLocalDate().getMonthValue()+1){
-                money2=(float) (total  * 30 * 0.005+((total-total/n)*30*0.003+total/n));
-            } else if(n!=0){
-                money1 = (float) (total  * 30 * 0.003 + total/n-money_guazhang-record);
-                money2= (float) ((total-total/n)*30*0.003+total/n);
-                money3= (float) ((total-total/n*2)*30*0.003+total/n);
-                money4= (float) ((total-total/n*3)*30*0.003+total/n);
-                money5= (float) ((total-total/n*4)*30*0.003+total/n);
+            if(n!=0){
+
+                if(total/n>money_guazhang){
+                    money1=total/n;
+                    money_record1=money_guazhang;
+                }else{
+                    money1=0;
+                    money_record1=money_guazhang;
+                    money_guazhang=0;
+                }
+                if(total/n>money_guazhang2){
+                    money2=total/n;
+                    money_record2=money_guazhang2;
+                }else{
+                    money_record2=money_guazhang2;
+                    money2=0;
+                    money_guazhang2=0;
+                }
+                if(total/n>money_guazhang3){
+                    money3=total/n;
+                    money_record3=money_guazhang3;
+                }else{
+                    money3=0;
+                    money_record3=money_guazhang3;
+                    money_record3=0;
+                }
+                if(total/n>money_guazhang4){
+                    money4=total/n;
+                    money_record4=money_guazhang4;
+                }else{
+                    money4=0;
+                    money_record4=money_guazhang4;
+                    money_guazhang4=0;
+                }
+                if(total/n>money_guazhang5){
+                    money5=total/n;
+                    money_record5=money_guazhang5;
+                }else{
+                    money5=0;
+                    money_record5=money_guazhang5;
+                    money_guazhang5=0;
+                }
+                if(total/n>money_guazhang6){
+                    money6=total/n;
+                    money_record6=money_guazhang6;
+                }else{
+                    money6=0;
+                    money_record6=money_guazhang6;
+                    money_guazhang6=0;
+                }
+                if(total/n>money_guazhang7){
+                    money7=total/n;
+                    money_record7=money_guazhang7;
+                }else{
+                    money7=0;
+                    money_record7=money_guazhang7;
+                    money_guazhang7=0;
+                }
+                if(total/n>money_guazhang8){
+                    money8=total/n;
+                    money_record8=money_guazhang8;
+                }else{
+                    money8=0;
+                    money_record8=money_guazhang8;
+                    money_guazhang8=0;
+                }
+                if(total/n>money_guazhang10){
+                    money10=total/n;
+                    money_record10=money_guazhang10;
+                }else{
+                    money10=0;
+                    money_record10=money_guazhang10;
+                    money_guazhang10=0;
+                }
+
             }
             Vector v = new Vector();
            for(int i=0;i<n;i++){
@@ -64,35 +146,114 @@ public class PayPlan extends JPanel {
             *@Date:10:37 2017/9/27
             *@Description:在每期后面添加付款按钮
             */
-            final Object[] columnNames = {"应还款日期", "应还金额（元）"," 还款 "};
+            final Object[] columnNames = {"期数","还款截止日期", "应还本金（元）","已挂账金额（元）"," 还款 "};
             int s=v.size();
-            Object[][] rowData = new Object[5][];
-            while(s>4){
-                rowData = new Object[][]{
-                        {String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-5)+"月"+
-                                String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日", money1,null},
-                        {String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-4)+"月"+
-                        String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money2,null},
-                        {String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-3)+"月"+
-                                String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money3,null},
-                        {String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-2)-12)+"月"+
-                                String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money4,null},
-                        {String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-1)-12)+"月"+
-                                String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money5,null}
-                };
-                s--;
+            Object[][] rowData = new Object[10][];
+            if(n==5||n==9||n==11){
+                while(s>4){
+                    rowData = new Object[][]{
+                            {"1",String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-5)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日", money1,money_guazhang,null},
+                            {"2",String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-4)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money2,money_guazhang2,null},
+                            {"3",String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-3)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money3,money_guazhang3,null},
+                            {"4",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-2)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money4,money_guazhang4,null},
+                            {"5",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-1)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money5,money_guazhang5,null}
+                    };
+                    s--;
+                }
+            }else if(n==6){
+                /**
+                 *@Author:吴焰
+                 *@Date:14:55 2017/9/28
+                 *@Description:拓展不同的借款期数
+                 *
+                 */
+                while(s>5){
+                    rowData = new Object[][]{
+                            {"1",String.valueOf(lo_time.toLocalDate().getYear())+"年"+((Integer)v.elementAt(s-6))+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money1,money_guazhang,null},
+                            {"2",String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-5)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日", money2,money_guazhang2,null},
+                            {"3",String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-4)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money3,money_guazhang3,null},
+                            {"4",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-3)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money4,money_guazhang4,null},
+                            {"5",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-2)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money5,money_guazhang5,null},
+                            {"6",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-1)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money5,money_guazhang6,null}
+
+                    };
+                    s--;
+                }
+            }else if(n==7){
+                /**
+                 *@Author:吴焰
+                 *@Date:14:55 2017/9/28
+                 *@Description:
+                 * 拓展不同的借款期数
+                 *
+                 */
+                while(s>6){
+                    rowData = new Object[][]{
+                            {"1",String.valueOf(lo_time.toLocalDate().getYear())+"年"+((Integer)v.elementAt(s-7))+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money1,money_guazhang,null},
+                            {"2",String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-6)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日", money2,money_guazhang2,null},
+                            {"3",String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-5)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money3,money_guazhang3,null},
+                            {"4",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-4)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money4,money_guazhang4,null},
+                            {"5",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-3)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money5,money_guazhang5,null},
+                            {"6",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-2)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money5,money_guazhang6,null},
+                            {"7",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-1)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money5,money_guazhang7,null}
+
+                    };
+                    s--;
+                }
             }
-            //JTable jt = new JTable(rowData, columnNames);
+            else if(n==8){
+                while(s>7){
+                    rowData = new Object[][]{
+                            {"1",String.valueOf(lo_time.toLocalDate().getYear())+"年"+((Integer)v.elementAt(s-8))+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money1,money_guazhang,null},
+                            {"2",String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-7)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日", money2,money_guazhang2,null},
+                            {"3",String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-6)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money3,money_guazhang3,null},
+                            {"4",String.valueOf(lo_time.toLocalDate().getYear())+"年"+v.elementAt(s-5)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money4,money_guazhang3,null},
+                            {"5",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-4)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money5,money_guazhang3,null},
+                            {"6",String.valueOf(lo_time.toLocalDate().getYear())+1+"年"+((Integer)v.elementAt(s-3)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money6,money_guazhang4,null},
+                            {"7",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-2)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money7,money_guazhang5,null},
+                            {"8",String.valueOf(lo_time.toLocalDate().getYear()+1)+"年"+((Integer)v.elementAt(s-1)-12)+"月"+
+                                    String.valueOf(lo_time.toLocalDate().getDayOfMonth())+"日",money8,money_guazhang6,null}
+
+                    };
+                    s--;
+                }
+            }
+
             model = new DefaultTableModel(rowData, columnNames);
-            JTable jt=new JTable(6,3);
+            JTable jt=new JTable(6,5);
             jt = new JTable(model);
             TableRender render = new TableRender();
             TableEditor editor = new TableEditor(new JTextField());
-            jt.getColumnModel().getColumn(2).setCellRenderer(render);
-            jt.getColumnModel().getColumn(2).setCellEditor(editor);
-            jt.getColumnModel().getColumn(2).setMaxWidth(300);
+            jt.getColumnModel().getColumn(4).setCellRenderer(render);
+            jt.getColumnModel().getColumn(4).setCellEditor(editor);
+            jt.getColumnModel().getColumn(4).setMaxWidth(300);
             editor.setClickCountToStart(0);
-            jt.setPreferredScrollableViewportSize(new Dimension(600, 200));//设置表格的大小
+            jt.setPreferredScrollableViewportSize(new Dimension(600, 400));//设置表格的大小
             jt.setRowHeight(30);//设置每行的高度为30
             jt.setRowMargin(5);//设置相邻两行单元格的距离
             jt.setRowSelectionAllowed(true);//设置可否被选择.默认为false

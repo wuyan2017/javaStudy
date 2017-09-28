@@ -4,15 +4,71 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 
+import static com.company.PayPlan.*;
+
 public class TableRender extends DefaultTableCellRenderer {
     public Component getTableCellRendererComponent(JTable table, Object value,
                                                    boolean isSelected, boolean hasFocus, int row, int column) {
-        if (row<0||column!=2)
+        if (row<0||column!=4)
             return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-        else {
-            JButton label = new JButton("点击还款");
-            label.setFont(new Font("隶书", Font.PLAIN, 10));
-            label.setBackground(Color.YELLOW);
+        else if(row==0){
+            JButton label = new JButton("还款");
+            label.setFont(new Font("隶书", Font.PLAIN, 14));
+            if(money1==0){
+                label.setBackground(Color.LIGHT_GRAY);
+            }else{
+                label.setBackground(Color.YELLOW);
+            }
+            label.setPreferredSize(new Dimension(table.getColumnModel().getColumn(column).getPreferredWidth(),20));
+            return label;
+        }else if(row==1){
+            JButton label = new JButton("还款");
+            label.setFont(new Font("隶书", Font.PLAIN, 14));
+            if(money2==0){
+                label.setBackground(Color.LIGHT_GRAY);
+            }else{
+                label.setBackground(Color.YELLOW);
+            }
+            label.setPreferredSize(new Dimension(table.getColumnModel().getColumn(column).getPreferredWidth(),20));
+            return label;
+        }else if(row==2){
+            JButton label = new JButton("还款");
+            label.setFont(new Font("隶书", Font.PLAIN, 14));
+            if(money3==0){
+                label.setBackground(Color.LIGHT_GRAY);
+            }else{
+                label.setBackground(Color.YELLOW);
+            }
+            label.setPreferredSize(new Dimension(table.getColumnModel().getColumn(column).getPreferredWidth(),20));
+            return label;
+        }else if(row==3){
+            JButton label = new JButton("还款");
+            label.setFont(new Font("隶书", Font.PLAIN, 14));
+            if(money4==0){
+                label.setBackground(Color.LIGHT_GRAY);
+            }else{
+                label.setBackground(Color.YELLOW);
+            }
+            label.setPreferredSize(new Dimension(table.getColumnModel().getColumn(column).getPreferredWidth(),20));
+            return label;
+        }else if(row==4){
+            JButton label = new JButton("还款");
+            label.setFont(new Font("隶书", Font.PLAIN, 14));
+            if(money5==0){
+                label.setBackground(Color.LIGHT_GRAY);
+            }else{
+                label.setBackground(Color.YELLOW);
+            }
+            label.setPreferredSize(new Dimension(table.getColumnModel().getColumn(column).getPreferredWidth(),20));
+            return label;
+        }else{
+            JButton label = new JButton("还款");
+            label.setFont(new Font("隶书", Font.PLAIN, 14));
+            if(money6==0){
+                label.setBackground(Color.LIGHT_GRAY);
+            }else{
+                label.setBackground(Color.YELLOW);
+            }
             label.setPreferredSize(new Dimension(table.getColumnModel().getColumn(column).getPreferredWidth(),20));
             return label;
         }
