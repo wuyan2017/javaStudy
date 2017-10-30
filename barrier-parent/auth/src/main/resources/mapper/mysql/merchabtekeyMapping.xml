@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- <typeAliases> -->
+<!-- <typeAlias alias="User" type="com.qianlong.UserEntity" /> -->
+<!-- </typeAliases> -->
+<mapper namespace="com.mobanker.auth.barrier.dao.MerchantKeyDao">
+
+
+	<select id="queryConfirmMerchant" parameterType="String" resultType="com.mobanker.auth.barrier.entity.MerchantKey">
+		  select server_private_key,des_key from t_merchant_key
+		  where  merchant_id = #{merchantID}
+	</select>
+
+
+</mapper>

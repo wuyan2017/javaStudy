@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- <typeAliases> -->
+<!-- <typeAlias alias="User" type="com.qianlong.UserEntity" /> -->
+<!-- </typeAliases> -->
+<mapper namespace="com.mobanker.auth.barrier.dao.FakeDao">
+
+	<select id="query" parameterType="java.lang.String"
+		resultType="com.mobanker.auth.barrier.entity.FakeEntity">
+		select * from t_fake
+		where code =#{0} order by delay_millisecond desc
+	</select>
+	
+	<select id="queryList" parameterType="java.lang.String"
+		resultType="com.mobanker.auth.barrier.entity.FakeEntity">
+		select * from t_fake
+		where code =#{0} order by delay_millisecond desc
+	</select>
+
+	<insert id="insert" parameterType="com.mobanker.auth.barrier.entity.FakeEntity">
+		insert into t_fake (code,response) values 
+		(#{code},#{response})
+	</insert>
+	
+	<insert id="executeSql" parameterType="map">
+		${sql} 
+	</insert>
+	
+	<update id="dropTable" parameterType="string">
+		drop table if exists ${tableName}
+	</update>
+</mapper>
