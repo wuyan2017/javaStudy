@@ -70,7 +70,7 @@ public  class Login extends JFrame{
                     String password = "chengce214";
                     conn = DriverManager.getConnection(url, user, password);
                     statement = conn.createStatement();
-                    String sql = "select * from test_wuyan where NAME='"+InName+"'";
+                    String sql = "select * from test_wuyan where username='"+InName+"'";
                     res = statement.executeQuery(sql);
                     while(res.next()) {
                         ID = res.getString(2);

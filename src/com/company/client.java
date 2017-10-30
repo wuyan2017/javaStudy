@@ -13,7 +13,8 @@ public class client extends JFrame implements  TreeSelectionListener {
     static JPanel jp;
     Loan p1;
     Repay p2;
-    PayPlan p3;
+    LoanInfo p3;
+    PayPlan payPlan;
     static CardLayout card;
     Record p4;
     public  client(){
@@ -21,7 +22,7 @@ public class client extends JFrame implements  TreeSelectionListener {
         DefaultMutableTreeNode node2 = new DefaultMutableTreeNode("还款");
         DefaultMutableTreeNode node3 = new DefaultMutableTreeNode("退出");
         //node2.add(new DefaultMutableTreeNode("开始还款"));
-        node2.add(new DefaultMutableTreeNode("还款计划"));
+        node2.add(new DefaultMutableTreeNode("借款信息"));
         node2.add(new DefaultMutableTreeNode("还款记录"));
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("贷款管理");
         root.add(node1);
@@ -45,6 +46,14 @@ public class client extends JFrame implements  TreeSelectionListener {
     public void valueChanged(TreeSelectionEvent e) {
         if(e.getSource()==jt){
             DefaultMutableTreeNode node= (DefaultMutableTreeNode) jt.getLastSelectedPathComponent();
+            /**
+             *@Author:吴焰
+             *@Date:9:50 2017/9/30
+             *@Description:
+             * 添加“借款信息”
+             * 去掉“还款计划”
+             * 还款内部加上：显示不同借款次数的信息，每次的借款都有相应的还款计划
+             */
                 if(node.isLeaf()){
                 String str=node.toString();
                 System.out.println(str);
@@ -58,8 +67,8 @@ public class client extends JFrame implements  TreeSelectionListener {
                     jp.add(p2,"p2");
                     card.show(jp,"p2");
                 }*/
-                else if(str.equals("还款计划")){
-                    p3=new PayPlan();
+                else if(str.equals("借款信息")){
+                    p3=new LoanInfo();
                     jp.add(p3,"p3");
                     card.show(jp,"p3");
                 }
